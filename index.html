@@ -8,34 +8,58 @@
     <link href="stylesheet.css">
 </head>
 <body>
+    <button style="display: block; margin: 0 auto;">Click me</button>
     <div id="container"></div>
+    
     <script>
         //flex container div, contains 16x16 grid of flex items
         const container = document.getElementById('container');
-        container.style.width = '480px';
+        container.style.width = '960px';
         container.style.display = 'flex';
         container.style.flexWrap = 'wrap';
         container.style.margin = '0 auto';
 
         //for loop, creates 16x16 grid
-        for (let i = 0; i < 256; i++){
-            const square = document.createElement('div');
-            square.classList.add('square');
-            //square.style.cssText = 'width: 20px; height: 20px;';
-            square.style.width = '28px';
-            square.style.height = '28px';
-            square.style.border = '1px solid black';
-            square.style.backgroundColor = '#ddd';
-            container.appendChild(square);
+        function createGrid (numBoxes) {
+            for (let i = 0; i < numBoxes*numBoxes; i++){
+                const square = document.createElement('div');
+                square.classList.add('square');
+                //square.style.cssText = 'width: 20px; height: 20px;';
+                // square.style.width = '60px';
+                square.style.width = (960 / numBoxes) + 'px';
+                square.style.height = (960 / numBoxes) + 'px';
+                square.style.border = '1px solid black';
+                square.style.backgroundColor = '#ddd';
+                container.appendChild(square);
+            }
         }
+
+        createGrid(16);
 
             const style = document.createElement('style');
             style.innerHTML = `
             .square:hover {
                 background-color: #aaa !important;
             }
+
+            .square {
+                box-sizing: border-box;
+            }
         `;
         document.head.appendChild(style);
+
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', () => {
+            const customBoxes = prompt('How many boxes do you want per side for the new grid?', '# of boxes');
+            if (customBoxes > 0 && customBoxes <= 100){
+                container.innerHTML = '';
+                createGrid(customBoxes);
+            }
+            else {
+                alert('invalid input, try again');
+            }
+        });
+
     </script>
 </body>
 </html>
