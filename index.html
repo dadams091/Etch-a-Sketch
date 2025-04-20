@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="stylesheet.css">
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const container = document.getElementById('container');
+        container.style.display = 'flex';
+        container.style.flexWrap = wrap;
+
+        for (let i = 0; i < 256; i++){
+            const square = document.createElement('div');
+            square.classList.add('square');
+            container.appendChild(square);
+            //review: square.style.width = '20px';
+            //square.style.height = '20px'
+            //square.style.backgoundColor = '#ddd';
+            //grid.appendChild(square);
+        }
+    </script>
+</body>
+</html>
