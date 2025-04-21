@@ -32,14 +32,20 @@
                 square.style.backgroundColor = '#ddd';
                 container.appendChild(square);
             }
+
+            document.querySelectorAll('.square').forEach(square => {
+            square.addEventListener('mouseover', function() {
+                this.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+                });
+            });
         }
 
         createGrid(16);
-
+        
             const style = document.createElement('style');
             style.innerHTML = `
             .square:hover {
-                background-color: #aaa !important;
+                // background-color: #aaa !important;
             }
 
             .square {
@@ -59,6 +65,9 @@
                 alert('invalid input, try again');
             }
         });
+
+        
+
 
     </script>
 </body>
