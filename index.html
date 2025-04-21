@@ -34,8 +34,12 @@
             }
 
             document.querySelectorAll('.square').forEach(square => {
-            square.addEventListener('mouseover', function() {
-                this.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+                square.dataset.opacity = 0;
+                square.addEventListener('mouseover', function() {
+                    let opacity = parseFloat(this.dataset.opacity);
+                    if (opacity < 1) opacity += 0.1;
+                    this.dataset.opacity = opacity;
+                    this.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255}, ${opacity})`;
                 });
             });
         }
